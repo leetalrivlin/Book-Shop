@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>📚 My Book Shop</title>
+  </head>
+  <body onload="onInit()">
+
+    <div class="header">
+      <h1>My Book Shop</h1>
+    </div>
+
+    <div class="table-section">
+      <button class="add-book-btn" onclick="openAddBook()">+</button>
+
+      <div class="add-book" hidden>
+        <form class="form-add-book" onsubmit="onAddBook()">
+          <input
+            type="text"
+            class="input-name"
+            name="user-book-name"
+            placeholder="Book name (e.g: The King)"
+            required
+          />
+          <input
+            type="number"
+            class="input-price"
+            name="user-book-price"
+            placeholder="Book price (e.g: 35)"
+            required
+          />
+          <input type="submit" class="book-submit-btn" value="Add Book" />
+        </form>
+      </div>
+
+      <table>
+        <thead>
+          <th onclick="log()">Id</th>
+          <th class="th-title" data-sort="title" onClick="onFilterBy(this)">
+            Title
+          </th>
+          <th class="th-price" data-sort="price" onClick="onFilterBy(this)">
+            Price
+          </th>
+          <th>Rating</th>
+          <th colspan="3">Actions</th>
+        </thead>
+        <tbody class="table-content"></tbody>
+      </table>
+    </div>
+
+    <div class="detail-modal" hidden>
+      <button class="close-btn" onclick="onCloseModal()">X</button>
+      <h2 class="name"></h2>
+      <p class="rating-stars"></p>
+      <img class="img-book" src="" />
+      <p class="text"></p>
+
+      <form class="rating-form" onsubmit="onSubmitRating(event)">
+        <label class="rating-header" for="rating">Add your rating (0-10)</label>
+        <div class="rating">
+          <input
+            type="button"
+            class="btn-minus"
+            value="-"
+            onclick="decrementValue()"
+          />
+          <input
+            type="number"
+            class="rating-num"
+            value="0"
+            min="0"
+            max="10"
+            name="rating"
+          />
+          <input
+            type="button"
+            class="btn-plus"
+            value="+"
+            onclick="incrementValue()"
+          /><br />
+          <input type="submit" class="btn-rate" value="Rate!" />
+        </div>
+      </form>
+    </div>
+
+    <script src="js/sevices/util-service.js"></script>
+    <script src="js/sevices/storage-service.js"></script>
+    <script src="js/sevices/book-service.js"></script>
+    <script src="js/book-controller.js"></script>
+  </body>
+</html>
