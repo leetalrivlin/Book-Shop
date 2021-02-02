@@ -31,9 +31,9 @@ function renderBooks() {
                 <td>${book.name}</td>
                 <td>${formatCurrency(book.price)}</td>
                 <td>${book.rating}⭐</td>
-                <td><button data-trans="read" class="btn read-btn" onclick="onRead('${book.id}')">${getTrans('read')}</button></td>
-                <td><button data-trans="update" class="btn update-btn" onclick="onUpdateBook('${book.id}')">${getTrans('update')}</button></td>
-                <td><button data-trans="delete" class="btn delete-btn" onclick="onRemoveBook('${book.id}')">${getTrans('delete')}</button></td>
+                <td><button data-trans="read" class="read-btn btn btn-dark btn-outline-light w-100" onclick="onRead('${book.id}')">${getTrans('read')}</button></td>
+                <td><button data-trans="update" class="update-btn btn-dark btn btn-outline-light w-100" onclick="onUpdateBook('${book.id}')">${getTrans('update')}</button></td>
+                <td><button data-trans="delete" class="delete-btn btn-dark btn btn-outline-danger w-100" onclick="onRemoveBook('${book.id}')">${getTrans('delete')}</button></td>
             </tr>`;
     })
     .join('');

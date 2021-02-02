@@ -3,28 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/main.css" />
     <title>📚 My Book Shop</title>
   </head>
-  <body onload="onInit()">
-
-    <div class="header">
+  <body onload="onInit()" class="bg-secondary">
+    <div class="header p-3 mb-2 bg-dark text-white">
       <h1 data-trans="main-title">My Book Shop</h1>
       <select onchange="onSetLang(this.value)">
         <option value="en">English</option>
         <option value="he">עברית</option>
-    </select>
+      </select>
     </div>
 
-    <div class="table-section">
-      <button class="add-book-btn" onclick="openAddBook()">+</button>
+    <div class="table-section container-sm">
+      <button class="add-book-btn btn btn-dark rounded-circle mb-5 mb-md-4" onclick="openAddBook()">+</button>
 
-      <div class="add-book" hidden>
-        <form class="form-add-book" onsubmit="onAddBook()">
+      <form class="form-add-book" onsubmit="onAddBook()">
+        <div class="add-book form-group" hidden>
           <input
             data-trans="book-name-placeholder"
             type="text"
-            class="input-name"
+            class="input-name form-control form-control-sm rounded-pill p-2"
             name="user-book-name"
             placeholder="Book name (e.g: The Little Prince)"
             required
@@ -32,22 +38,36 @@
           <input
             data-trans="book-price-placeholder"
             type="number"
-            class="input-price"
+            class="input-price form-control form-control-sm mt-3 rounded-pill p-2"
             name="user-book-price"
             placeholder="Book price (e.g: 35)"
             required
           />
-          <button data-trans="add-book" type="submit" class="book-submit-btn">Add Book</button>
+          <button data-trans="add-book" type="submit" class="book-submit-btn btn btn-dark w-100 mt-3 rounded-pill">
+            Add Book
+          </button>
+        </div>
         </form>
-      </div>
+    </div>
 
-      <table>
+      <div class="container-fluid text-center">
+      <table class="table table-dark table-striped w-75 m-auto">
         <thead>
           <th data-trans="id">ID</th>
-          <th data-trans="title" class="th-title" data-sort="title" onClick="onFilterBy(this)">
+          <th
+            data-trans="title"
+            class="th-title"
+            data-sort="title"
+            onClick="onFilterBy(this)"
+          >
             Title
           </th>
-          <th data-trans="price" class="th-price" data-sort="price" onClick="onFilterBy(this)">
+          <th
+            data-trans="price"
+            class="th-price"
+            data-sort="price"
+            onClick="onFilterBy(this)"
+          >
             Price
           </th>
           <th data-trans="rating">Rating</th>
@@ -56,6 +76,7 @@
         <tbody class="table-content"></tbody>
       </table>
     </div>
+    
 
     <div class="detail-modal" hidden>
       <button class="close-btn" onclick="onCloseModal()">X</button>
@@ -65,7 +86,9 @@
       <p class="text"></p>
 
       <form class="rating-form" onsubmit="onSubmitRating(event)">
-        <label data-trans="raiting-title" class="rating-header" for="rating">Add your rating (0-10)</label>
+        <label data-trans="raiting-title" class="rating-header" for="rating"
+          >Add your rating (0-10)</label
+        >
         <div class="rating">
           <input
             type="button"
@@ -87,11 +110,25 @@
             value="+"
             onclick="incrementValue()"
           /><br />
-          <button data-trans="rate" type="submit" class="btn-rate">Rate!</button>
+          <button data-trans="rate" type="submit" class="btn-rate">
+            Rate!
+          </button>
         </div>
       </form>
     </div>
 
+    <!-- Bootstrap 1-->
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+    crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap 2-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/sevices/i18n-service.js"></script>
     <script src="js/sevices/util-service.js"></script>
     <script src="js/sevices/storage-service.js"></script>
