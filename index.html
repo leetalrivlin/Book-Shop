@@ -9,7 +9,11 @@
   <body onload="onInit()">
 
     <div class="header">
-      <h1>My Book Shop</h1>
+      <h1 data-trans="main-title">My Book Shop</h1>
+      <select onchange="onSetLang(this.value)">
+        <option value="en">English</option>
+        <option value="he">עברית</option>
+    </select>
     </div>
 
     <div class="table-section">
@@ -18,34 +22,36 @@
       <div class="add-book" hidden>
         <form class="form-add-book" onsubmit="onAddBook()">
           <input
+            data-trans="book-name-placeholder"
             type="text"
             class="input-name"
             name="user-book-name"
-            placeholder="Book name (e.g: The King)"
+            placeholder="Book name (e.g: The Little Prince)"
             required
           />
           <input
+            data-trans="book-price-placeholder"
             type="number"
             class="input-price"
             name="user-book-price"
             placeholder="Book price (e.g: 35)"
             required
           />
-          <input type="submit" class="book-submit-btn" value="Add Book" />
+          <button data-trans="add-book" type="submit" class="book-submit-btn">Add Book</button>
         </form>
       </div>
 
       <table>
         <thead>
-          <th onclick="log()">Id</th>
-          <th class="th-title" data-sort="title" onClick="onFilterBy(this)">
+          <th data-trans="id">ID</th>
+          <th data-trans="title" class="th-title" data-sort="title" onClick="onFilterBy(this)">
             Title
           </th>
-          <th class="th-price" data-sort="price" onClick="onFilterBy(this)">
+          <th data-trans="price" class="th-price" data-sort="price" onClick="onFilterBy(this)">
             Price
           </th>
-          <th>Rating</th>
-          <th colspan="3">Actions</th>
+          <th data-trans="rating">Rating</th>
+          <th data-trans="actions" colspan="3">Actions</th>
         </thead>
         <tbody class="table-content"></tbody>
       </table>
@@ -59,7 +65,7 @@
       <p class="text"></p>
 
       <form class="rating-form" onsubmit="onSubmitRating(event)">
-        <label class="rating-header" for="rating">Add your rating (0-10)</label>
+        <label data-trans="raiting-title" class="rating-header" for="rating">Add your rating (0-10)</label>
         <div class="rating">
           <input
             type="button"
@@ -81,11 +87,12 @@
             value="+"
             onclick="incrementValue()"
           /><br />
-          <input type="submit" class="btn-rate" value="Rate!" />
+          <button data-trans="rate" type="submit" class="btn-rate">Rate!</button>
         </div>
       </form>
     </div>
 
+    <script src="js/sevices/i18n-service.js"></script>
     <script src="js/sevices/util-service.js"></script>
     <script src="js/sevices/storage-service.js"></script>
     <script src="js/sevices/book-service.js"></script>

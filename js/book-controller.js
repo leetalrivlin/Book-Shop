@@ -11,6 +11,7 @@ function onInit() {
   if (bookOpened) bookOpened.isModalOpen = false;
 
   _saveBooksToStorage();
+  doTrans();
   renderBooks();
 }
 
@@ -28,15 +29,26 @@ function renderBooks() {
       return `<tr>
                 <td>${book.id}</td>
                 <td>${book.name}</td>
-                <td>${book.price}</td>
+                <td>${formatCurrency(book.price)}</td>
                 <td>${book.rating}⭐</td>
-                <td><button class="btn read-btn" onclick="onRead('${book.id}')">Read</button></td>
-                <td><button class="btn update-btn" onclick="onUpdateBook('${book.id}')">Update</button></td>
-                <td><button class="btn delete-btn" onclick="onRemoveBook('${book.id}')">Delete</button></td>
+                <td><button data-trans="read" class="btn read-btn" onclick="onRead('${book.id}')">${getTrans('read')}</button></td>
+                <td><button data-trans="update" class="btn update-btn" onclick="onUpdateBook('${book.id}')">${getTrans('update')}</button></td>
+                <td><button data-trans="delete" class="btn delete-btn" onclick="onRemoveBook('${book.id}')">${getTrans('delete')}</button></td>
             </tr>`;
     })
     .join('');
   document.querySelector('.table-content').innerHTML = strHTML;
+}
+
+function onSetLang(lang) {
+  setLang(lang);
+  if (lang === 'he') {
+      document.body.classList.add('rtl');
+  } else {
+      document.body.classList.remove('rtl');
+  }
+  doTrans();
+  renderBooks();
 }
 
 function openAddBook() {
@@ -85,12 +97,13 @@ function renderRatingStars(rating) {
 
 function onUpdateBook(bookId) {
   var newBookPrice = +prompt('Enter new price:');
+  // var priceInCurrLang = formatCurrency(newBookPrice);
   updateBook(bookId, newBookPrice);
   renderBooks();
 }
 
 function onRemoveBook(bookId) {
-  var isConfirmed = confirm('Are you sure you want to delete this book?');
+  var isConfirmed = confirm(getTrans('confirm'));
   if (!isConfirmed) return;
   removeBook(bookId);
   renderBooks();

@@ -6,6 +6,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
+body.rtl {
+  direction: rtl;
+}
 .header {
   width: 100vw;
   height: 100px;
