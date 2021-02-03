@@ -37,7 +37,7 @@ function _createBook(nameFromUser, priceFromUser) {
     imgUrl: `img/img_${randImgNum}.jpg`,
     txt: getRandTxt(),
     isModalOpen: false,
-    rating: getRandomIntInclusive(0, 10),
+    rating: getRandomIntInclusive(1, 5)
   };
   return book;
 }

@@ -62,6 +62,10 @@ var gTrans = {
         en: 'Are you sure you want to delete this book?',
         he: 'בטוח שאתם מעוניינים למחוק ספר זה?'
     },
+    'update-prompt': {
+        en: 'Enter new price',
+        he: 'המחיר העדכני של הספר'
+    },
 }
 
 function doTrans() {

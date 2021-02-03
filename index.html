@@ -15,15 +15,19 @@
   </head>
   <body onload="onInit()" class="bg-secondary">
     <div class="header p-3 mb-2 bg-dark text-white">
-      <h1 data-trans="main-title">My Book Shop</h1>
-      <select onchange="onSetLang(this.value)">
+
+      <h1 data-trans="main-title" class="text-center">My Book Shop</h1>
+
+      <select onchange="onSetLang(this.value)" class="select-lang position-absolute top-0 end-0 m-4">
         <option value="en">English</option>
         <option value="he">עברית</option>
       </select>
     </div>
 
     <div class="table-section container-sm">
-      <button class="add-book-btn btn btn-dark rounded-circle mb-5 mb-md-4" onclick="openAddBook()">+</button>
+      <button
+        class="add-book-btn btn btn-dark rounded-circle mb-5 mb-md-4"
+        onclick="openAddBook()">+</button>
 
       <form class="form-add-book" onsubmit="onAddBook()">
         <div class="add-book form-group" hidden>
@@ -43,14 +47,18 @@
             placeholder="Book price (e.g: 35)"
             required
           />
-          <button data-trans="add-book" type="submit" class="book-submit-btn btn btn-dark w-100 mt-3 rounded-pill">
+          <button
+            data-trans="add-book"
+            type="submit"
+            class="book-submit-btn btn btn-dark w-100 mt-3 rounded-pill"
+          >
             Add Book
           </button>
         </div>
-        </form>
+      </form>
     </div>
 
-      <div class="container-fluid text-center">
+    <div class="container-fluid text-center">
       <table class="table table-dark table-striped w-75 m-auto">
         <thead>
           <th data-trans="id">ID</th>
@@ -76,41 +84,43 @@
         <tbody class="table-content"></tbody>
       </table>
     </div>
-    
+     
+    <!-- Modal -->
+    <div class="detail-modal container bg-dark text-light col-sm-4 h-100 m-0 fixed-top border border-warning" tabindex="-1" hidden>
+      <button type="button" class="close mt-3" data-dismiss="modal" aria-label="Close" onclick="onCloseModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h3 class="name text-center"></h3>
+      <p class="rating-stars text-center"></p>
+      <img class="img-book mx-auto d-block" src="" />
+      <p class="text mt-4"></p>
 
-    <div class="detail-modal" hidden>
-      <button class="close-btn" onclick="onCloseModal()">X</button>
-      <h2 class="name"></h2>
-      <p class="rating-stars"></p>
-      <img class="img-book" src="" />
-      <p class="text"></p>
-
-      <form class="rating-form" onsubmit="onSubmitRating(event)">
-        <label data-trans="raiting-title" class="rating-header" for="rating"
-          >Add your rating (0-10)</label
-        >
+      <form class="rating-form mt-4 text-center form-group w-75 mx-auto d-block" onsubmit="onSubmitRating(event)">
+        <label data-trans="raiting-title" class="rating-header mb-2" for="rating"
+          >Add your rating (0-5)</label>
         <div class="rating">
+          <div class="input-group mb-3">
           <input
             type="button"
-            class="btn-minus"
+            class="btn-minus btn bg-warning form-control-sm rounded-0"
             value="-"
             onclick="decrementValue()"
           />
           <input
             type="number"
-            class="rating-num"
+            class="rating-num form-control form-control-sm text-center"
             value="0"
             min="0"
-            max="10"
+            max="5"
             name="rating"
           />
           <input
             type="button"
-            class="btn-plus"
+            class="btn-plus btn bg-warning form-control-sm rounded-0"
             value="+"
             onclick="incrementValue()"
-          /><br />
-          <button data-trans="rate" type="submit" class="btn-rate">
+          /></div>
+          <button data-trans="rate" type="submit" class="btn-rate btn btn-dark btn-outline-warning w-100 rounded-0">
             Rate!
           </button>
         </div>
@@ -119,9 +129,9 @@
 
     <!-- Bootstrap 1-->
     <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-    crossorigin="anonymous"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+      integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+      crossorigin="anonymous"
     ></script>
     <!-- Bootstrap 2-->
     <script
@@ -129,6 +139,7 @@
       integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
       crossorigin="anonymous"
     ></script>
+    <script src="lib/jquery/jquery.js"></script>
     <script src="js/sevices/i18n-service.js"></script>
     <script src="js/sevices/util-service.js"></script>
     <script src="js/sevices/storage-service.js"></script>
