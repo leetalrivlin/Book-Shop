@@ -4,6 +4,15 @@
 body.rtl {
   direction: rtl;
 }
+body.rtl .select-lang{
+  left: unset;
+  right: 2rem;
+}
+.select-lang {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
 .table-section {
   margin-top: 50px;
   text-align: center;
